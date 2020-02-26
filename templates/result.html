@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Anime List</title>
+</head>
+<body style="background-image: url('https://www.saurabhkarwal.com/wp-content/uploads/2018/03/Background-opera-speeddials-community-web-simple-backgrounds.jpg');">
+    <br>
+    <h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Anime Search</h1>
+
+        <table style="background-color: whitesmoke; width:740px; display: inline-block; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" cellspacing="5">
+        <tr>
+            <td style="text-align: center;" rowspan="10"><img src="{{favoritku['img_url']}}" style="width:150px;height:200px;"></td>
+            <td colspan="3" style="font-size: larger; text-indent: 30px;"><b>{{favoritku['title']}}</b></td>
+        </tr>
+        
+        <td style="display: inline-block; height: 230px; width:580px; overflow-y: scroll;">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-homex" role="tab" aria-controls="nav-home" aria-selected="true">Profile</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profilex" role="tab" aria-controls="nav-profile" aria-selected="false">Synopsis</a>
+                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contactx" role="tab" aria-controls="nav-contact" aria-selected="false">About</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-homex" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div style="display: inline-block; line-height:10px; word-wrap: break-word;">
+                        <div><br>
+                            <ul><img src="static/ic-genre.png"  style="width:20px;height:20px;"> : {{favoritku['genre']}}</ul>
+                            <ul><img src="static/ic-age.png"    style="width:20px;height:20px;"> : {{favoritku['rating']}}</ul>
+                            <ul><img src="static/ic-score.png"  style="width:20px;height:20px;"> : {{favoritku['score']}} / 10</ul>
+                            <ul><img src="static/ic-airing.png" style="width:20px;height:20px;"> : {{favoritku['premiered']}}</ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profilex" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div style="display: inline-block; line-height:25px; text-indent: 30px">
+                        <div><br>
+                            <ul><p>{{favoritku['synopsis']}}</p></ul>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-contactx" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <div style="display: inline-block; line-height:10px; word-wrap: break-word;">
+                        <div><br>
+                            <ul style="font-weight: bold">Original Title: </ul>
+                            <ul>{{favoritku['title_japanese']}}</ul><br>
+                            <ul style="font-weight: bold">Studio: </ul>
+                            <ul>{{favoritku['studio']}}</ul><br>
+                            <ul style="font-weight: bold">Link website: </ul>
+                            <ul><a href="{{favoritku['link']}}">For more info</a></ul><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </td>
+        </table>
+
+        <br>
+        <br>
+        <h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Recommended for you: </h1>
+        
+        {% for i in rekomen%}
+        
+        <table style="background-color:whitesmoke; width:700px; display: inline-block;  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" cellspacing="5">
+        <tr>
+            <td style="text-align: center;" rowspan="10"><img src="{{i['image']}}" style="width:140px;height:200px;"></td>
+            <td colspan="5" style="font-size: larger; text-indent: 30px; line-height:35px;"><b>{{i['title']}}</b></td>
+        </tr>
+            <td style="display: inline-block; height: 230px; width:560px; overflow-y: scroll;">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home{{i['id']}}" role="tab" aria-controls="nav-home" aria-selected="true">Profile</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile{{i['id']}}" role="tab" aria-controls="nav-profile" aria-selected="false">Synopsis</a>
+                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact{{i['id']}}" role="tab" aria-controls="nav-contact" aria-selected="false">About</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home{{i['id']}}" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div style="display: inline-block; line-height:10px; word-wrap: break-word;">
+                        <div><br>
+                            <ul><img src="static/ic-genre.png"  style="width:20px;height:20px;"> : {{i['genre']}}</ul>
+                            <ul><img src="static/ic-age.png"    style="width:20px;height:20px;"> : {{i['age']}}</ul>
+                            <ul><img src="static/ic-score.png"  style="width:20px;height:20px;"> : {{i['score']}} / 10</ul>
+                            <ul><img src="static/ic-airing.png" style="width:20px;height:20px;"> : {{i['airing']}}</ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile{{i['id']}}" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div style="display: inline-block; line-height:25px; text-indent: 30px">
+                        <div><br>
+                            <ul><p>{{i['syno']}}</p></ul>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-contact{{i['id']}}" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <div style="display: inline-block; line-height:10px; word-wrap: break-word;">
+                        <div><br>
+                            <ul style="font-weight: bold">Original Title: </ul>
+                            <ul>{{i['jpn']}}</ul><br>
+                            <ul style="font-weight: bold">Studio: </ul>
+                            <ul>{{i['studio']}}</ul><br>
+                            <ul style="font-weight: bold">Link website: </ul>
+                            <ul><a href="{{i['link']}}">For more info</a></ul><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </td>
+        </table>
+        {% endfor %}
+        <br><br>
+
+        <form action = "http://127.0.0.1:5000">
+        <button class="btn btn-info" style="height:45px; width:180px; font-size: 20px; text-align: center; line-height: 20px;">Back to <b>Home</b></button>
+        </form>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
+</body>
+</html>
